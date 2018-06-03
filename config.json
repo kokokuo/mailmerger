@@ -1,0 +1,13 @@
+{
+	"mail_subject": "[免費試用] 奧丁丁區塊鏈訂房系統",
+	"smtp_host": "smtp.gmail.com",
+	"sender_mail": "naomi@obook.com",
+	"sender_name": "陳虹樺",
+	"password": "fgponecainvcjxdn",
+	"formal":{
+		"receiver":null
+	},
+	"test": {
+		"receiver": ["v6610688@gmail.com"]
+	}
+}
