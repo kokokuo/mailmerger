@@ -1,27 +1,38 @@
+# -*- coding: utf-8 -*-
+from typing import Optional
+from .codes import ErrorCodesInfo
 
 
-class ReqSysAbnoramlError(Exception):
+class ApplicationException(Exception):
+    def __init__(self, error: ErrorCodesInfo, detail: Optional[str]) -> None:
+        self._error_code = error.name
+        self._error_message = error.value
+        self._detail = detail
+
+    @property
+    def error_code(self) -> str:
+        return self._error_code
+
+    @property
+    def error_message(self) -> str:
+        return self._error_message
+
+    @property
+    def detail(self) -> Optional[str]:
+        return self._detail
+
+
+class SheetSourcePathNotFound(ApplicationException):
     """
-    作為識別該頁面為
+    Sheet 來源不存在
     """
-    def __init__(self, http_code: int, message: str, req_url: str, req_content: str) -> None:
-        self._http_code = http_code
-        self._message = message
-        self._url = req_url
-        self._content = req_content
+    def __init__(self,
+                 error: ErrorCodesInfo,
+                 path: str,
+                 detail: Optional[str]) -> None:
+        self._path = path
+        super(SheetSourcePathNotFound, self).__init__(error, detail)
 
     @property
-    def http_code(self) -> int:
-        return self._http_code
-
-    @property
-    def message(self) -> str:
-        return self._message
-
-    @property
-    def url(self) -> str:
-        return self._url
-
-    @property
-    def content(self) -> str:
-        return self._content
+    def path(self) -> str:
+        return self._path
