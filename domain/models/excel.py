@@ -10,7 +10,8 @@ from infra.excepts.codes import ErrorCodesInfo
 
 
 class ExcelSheetParser(object):
-    def __init__(self, filename: str):
+    def __init__(self, logger: Logger, filename: str):
+        self._logger = logger
         self._set_filename(filename)
         self._sheet_data: pd.DataFrame = pd.DataFrame()
         self._excel = pd.ExcelFile(self.filename)
@@ -48,9 +49,9 @@ class ExcelSheetParser(object):
         if sheetname:
             if sheetname not in self._excel.sheet_names:
                 raise SourceContentNotExist(ErrorCodesInfo.SHEET_NOT_FOUND_IN_EXCEL)
-            self._sheet_data = self._excel.parse(self._filename, sheetname)
+            self._sheet_data = self._excel.parse(sheetname)
         else:
-            self._sheet_data = self._excel.parse(self._filename)
+            self._sheet_data = self._excel.parse()
 
     # def read_sheets(self) -> None:
     #     """
