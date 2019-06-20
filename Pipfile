@@ -15,6 +15,7 @@ jinja2 = "*"
 click = "*"
 pyyaml = "*"
 colorama = "*"
+xlrd = "*"
 
 [requires]
 python_version = "3.7"

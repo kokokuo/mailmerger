@@ -13,6 +13,7 @@ class ExcelSheetParser(object):
     def __init__(self, filename: str):
         self._set_filename(filename)
         self._sheet_data: pd.DataFrame = pd.DataFrame()
+        self._excel = pd.ExcelFile(self.filename)
 
     def _does_excel_format(self, path: str) -> bool:
         support_extension = ['.xlsx', '.xls']
@@ -43,13 +44,13 @@ class ExcelSheetParser(object):
         Args:
             sheetname (Optinoal[str]): 要讀取的 Sheet 檔案。若為輸入，預設為第一張 Sheet
         """
-        excel = pd.ExcelFile(self._filename)
+
         if sheetname:
-            if sheetname not in excel.sheet_names:
+            if sheetname not in self._excel.sheet_names:
                 raise SourceContentNotExist(ErrorCodesInfo.SHEET_NOT_FOUND_IN_EXCEL)
-            self._sheet_data = excel.parse(self._filename, sheetname)
+            self._sheet_data = self._excel.parse(self._filename, sheetname)
         else:
-            self._sheet_data = excel.parse(self._filename)
+            self._sheet_data = self._excel.parse(self._filename)
 
     # def read_sheets(self) -> None:
     #     """
