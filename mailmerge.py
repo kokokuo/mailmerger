@@ -4,10 +4,7 @@ import click
 from settings import config
 
 
-# mailmerge --pdf [資料來源] [信件範本]
-# mailmerge --html [資料來源] [信件範本]
-# mailmerge --email [資料來源] [信件範本]
-
+# mailmerge --action=[pdf|html|email] [資料來源] [信件範本]
 
 @click.command()
 @click.argument("excelpath", required=True, type=click.Path())
