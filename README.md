@@ -1,5 +1,5 @@
-# 專案描述
----
-此專案是讀取 Excel 內容，根據 Excel 內容中所需的欄位，自動塞入樣板信件，並完成大量自動寄信。
-為了方便女友工作所製作的小工具，目前尚未完成。
+# mailmerger
+This project is a command line tools which read source sheet or table data and automatically inserts these data into email HTML format template through searching user-predefined tags followed `{{` and `}}` syntax, then send emails or generate PDF.
 
+## Project reason
+This project was made because my girlfriend and their colleagues suffer from sending large direct mails and each content was simliar, but need to change some data with same location.
