@@ -4,7 +4,7 @@ from .codes import ErrorCodesInfo
 
 
 class ApplicationException(Exception):
-    def __init__(self, error: ErrorCodesInfo, detail: Optional[str]) -> None:
+    def __init__(self, error: ErrorCodesInfo, detail: Optional[str] = None) -> None:
         self._error_code = error.name
         self._error_message = error.value
         self._detail = detail
@@ -22,17 +22,43 @@ class ApplicationException(Exception):
         return self._detail
 
 
-class SheetSourcePathNotFound(ApplicationException):
+class SourceFilePathNotFound(ApplicationException):
     """
-    Sheet 來源不存在
+    來源檔案不存在
     """
     def __init__(self,
                  error: ErrorCodesInfo,
-                 path: str,
-                 detail: Optional[str]) -> None:
+                 detail: Optional[str],
+                 path: Optional[str] = None) -> None:
         self._path = path
-        super(SheetSourcePathNotFound, self).__init__(error, detail)
+        super(SourceFilePathNotFound, self).__init__(error, detail)
 
     @property
-    def path(self) -> str:
+    def path(self) -> Optional[str]:
         return self._path
+
+
+class SourceFileFormatError(ApplicationException):
+    """
+    來源檔案類型錯誤
+    """
+    def __init__(self,
+                 error: ErrorCodesInfo,
+                 detail: Optional[str],
+                 path: Optional[str] = None) -> None:
+        self._path = path
+        super(SourceFileFormatError, self).__init__(error, detail)
+
+    @property
+    def path(self) -> Optional[str]:
+        return self._path
+
+
+class SourceContentNotExist(ApplicationException):
+    """
+    來源內容不存在（檔案存在但內容不在）
+    """
+    def __init__(self,
+                 error: ErrorCodesInfo,
+                 detail: Optional[str] = None) -> None:
+        super(SourceContentNotExist, self).__init__(error, detail)
