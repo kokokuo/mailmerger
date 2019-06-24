@@ -15,7 +15,7 @@ class MailAgent(object):
             mail_name(str): 信件的樣本檔案名稱
         """
         self._jinja_env = Environment(
-            loader=PackageLoader("app", "templates"), 
+            loader=PackageLoader("app", "templates"),
             autoescape=select_autoescape(["html", "xml"])
         )
         self._mail_name = mail_name
