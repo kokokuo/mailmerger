@@ -19,3 +19,6 @@ class PreMergeSourceParsingService(object):
         resp_dto = PreMergeSourceAssembler().sheet2source(self._excel.datasheet)
         self._logger.debug(f"轉換成 PreMergeSourceDTO 的資料格式 : {resp_dto}")
         return resp_dto
+
+
+parsing_service = PreMergeSourceParsingService()
