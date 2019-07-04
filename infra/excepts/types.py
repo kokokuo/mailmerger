@@ -22,7 +22,7 @@ class ApplicationException(Exception):
         return self._detail
 
 
-class SourceFilePathNotFound(ApplicationException):
+class FilePathNotFound(ApplicationException):
     """
     來源檔案不存在
     """
@@ -31,14 +31,14 @@ class SourceFilePathNotFound(ApplicationException):
                  detail: Optional[str],
                  path: Optional[str] = None) -> None:
         self._path = path
-        super(SourceFilePathNotFound, self).__init__(error, detail)
+        super(FilePathNotFound, self).__init__(error, detail)
 
     @property
     def path(self) -> Optional[str]:
         return self._path
 
 
-class SourceFileFormatError(ApplicationException):
+class FileFormatError(ApplicationException):
     """
     來源檔案類型錯誤
     """
@@ -47,18 +47,18 @@ class SourceFileFormatError(ApplicationException):
                  detail: Optional[str],
                  path: Optional[str] = None) -> None:
         self._path = path
-        super(SourceFileFormatError, self).__init__(error, detail)
+        super(FileFormatError, self).__init__(error, detail)
 
     @property
     def path(self) -> Optional[str]:
         return self._path
 
 
-class SourceContentNotExist(ApplicationException):
+class FileContentNotExist(ApplicationException):
     """
     來源內容不存在（檔案存在但內容不在）
     """
     def __init__(self,
                  error: ErrorCodesInfo,
                  detail: Optional[str] = None) -> None:
-        super(SourceContentNotExist, self).__init__(error, detail)
+        super(FileContentNotExist, self).__init__(error, detail)

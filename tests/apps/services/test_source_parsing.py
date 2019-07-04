@@ -2,7 +2,7 @@ import pytest
 from typing import Callable
 from logging import Logger
 from apps.dto.source import PreMergeSourceDTO
-from apps.services.source_parsing import PreMergeSourceParsingService
+from apps.services.datasource import PreMergeSourceParsingService
 from tests.config import TestSheetConifg, TestParsingSourceConifg
 
 
@@ -80,4 +80,3 @@ class TestPreMergeSourceParsingService(object):
         result_dto: PreMergeSourceDTO = service.parsing_excel(cn_header_sheet_path)
         logger.debug(f"PreMergeSourceParsingService 執行 parsing_excel 的結果 : {result_dto}")
         assert result_dto != expected
-

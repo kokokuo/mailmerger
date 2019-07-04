@@ -4,9 +4,9 @@ from unittest.mock import MagicMock
 from typing import Dict, List, Callable, Any
 from domain.models.excel import ExcelSheetParser
 from infra.excepts.codes import ErrorCodesInfo
-from infra.excepts.types import SourceFilePathNotFound
-from infra.excepts.types import SourceFileFormatError
-from infra.excepts.types import SourceContentNotExist
+from infra.excepts.types import FilePathNotFound
+from infra.excepts.types import FileFormatError
+from infra.excepts.types import FileContentNotExist
 from tests.config import TestSheetConifg, TestParsinExcelSheetConifg
 
 
@@ -22,16 +22,16 @@ class TestExcelSheetParser(object):
 
         assert self.excel.filename == exist_filepath
 
-    def test_file_not_found(self,
+    def test_file_not_exist(self,
                             logger: Logger,
                             find_sheet_path: Callable[[str], str]) -> None:
         # Expected
-        expected = ErrorCodesInfo.EXCEL_NOT_FOUND.name
+        expected = ErrorCodesInfo.SOURCE_EXCEL_NOT_EXIST.name
 
         non_exist_filename = TestSheetConifg.TEST_NON_EXIST_SHEET_FILENAME
         non_exist_filepath: str = find_sheet_path(non_exist_filename)
         logger.debug(f"檔案路徑名稱 : {non_exist_filepath}")
-        with pytest.raises(SourceFilePathNotFound) as errinfo:
+        with pytest.raises(FilePathNotFound) as errinfo:
             self.excel = ExcelSheetParser(non_exist_filepath)
         logger.debug(f"Exception Info 資訊 : {errinfo.value}")
 
@@ -40,12 +40,12 @@ class TestExcelSheetParser(object):
     def test_file_not_excel_format(self,
                                    logger: Logger,
                                    find_sheet_path: Callable[[str], str]) -> None:
-        expected = ErrorCodesInfo.FILE_NOT_EXCEL_FORMAT.name
+        expected = ErrorCodesInfo.SOURCE_FILE_NOT_EXCEL_FORMAT.name
 
         non_excel_format_filename = TestSheetConifg.TEST_NON_EXCEL_FORMAT_FILE
         non_excel_format_filepath: str = find_sheet_path(non_excel_format_filename)
         logger.debug(f"檔案路徑名稱 : {non_excel_format_filepath}")
-        with pytest.raises(SourceFileFormatError) as errinfo:
+        with pytest.raises(FileFormatError) as errinfo:
             self.excel = ExcelSheetParser(non_excel_format_filepath)
         logger.debug(f"Exception Info 資訊 : {errinfo.value}")
 
@@ -116,7 +116,7 @@ class TestExcelSheetParser(object):
         filepath: str = find_sheet_path(filename)
         self.excel = ExcelSheetParser(filepath)
 
-        with pytest.raises(SourceContentNotExist) as errinfo:
+        with pytest.raises(FileContentNotExist) as errinfo:
             self.excel.read_sheet(sheetname)
 
         assert errinfo.value.error_code == expected
