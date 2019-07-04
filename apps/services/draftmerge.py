@@ -25,11 +25,11 @@ class SourceMergeEmailDraftService(object):
         return reader.read()
 
     def merge2pdf(self, draft_content: str, source: PreMergeSourceDTO):
-        pass
-
-    def merge2html(self, draft_content: str, source: PreMergeSourceDTO):
         merger = SourceMailMerger(draft_content)
         merger.merge_source(source.headers, source.dataset)
+
+    def merge2html(self, draft_content: str, source: PreMergeSourceDTO):
+        pass
 
     def merge2send(self, draft_content: str, source: PreMergeSourceDTO):
         pass

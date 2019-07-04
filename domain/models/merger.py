@@ -27,4 +27,4 @@ class SourceMailMerger(object):
         if matched:
             for match_word in matched:
                 header = re.sub(self._sub_pattern, "", match_word).strip()
-                print(f"[ Matched ] header - {header}")
+                self._logger.debug(f"[ Matched ] header - {header}")

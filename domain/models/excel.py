@@ -28,7 +28,7 @@ class ExcelSheetParser(object):
         return False
 
     def _set_filename(self, filename: str) -> None:
-        if FilePathSearcher.exist(filename):
+        if not FilePathSearcher.exist(filename):
             raise FilePathNotFound(ErrorCodesInfo.SOURCE_EXCEL_NOT_EXIST, filename)
         if not self._does_excel_format(filename):
             raise FileFormatError(ErrorCodesInfo.SOURCE_FILE_NOT_EXCEL_FORMAT, filename)
