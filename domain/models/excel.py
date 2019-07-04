@@ -4,10 +4,11 @@ from typing import Optional
 from logging import Logger
 import pandas as pd
 from infra.logging import scraping_logger
-from infra.excepts.types import SourceFilePathNotFound
-from infra.excepts.types import SourceFileFormatError
-from infra.excepts.types import SourceContentNotExist
+from infra.excepts.types import FilePathNotFound
+from infra.excepts.types import FileFormatError
+from infra.excepts.types import FileContentNotExist
 from infra.excepts.codes import ErrorCodesInfo
+from infra.path.searcher import FilePathSearcher
 
 
 class ExcelSheetParser(object):
@@ -27,12 +28,12 @@ class ExcelSheetParser(object):
         return False
 
     def _set_filename(self, filename: str) -> None:
-        if not os.path.exists(filename):
-            raise SourceFilePathNotFound(ErrorCodesInfo.EXCEL_NOT_FOUND, filename)
+        if not FilePathSearcher.exist(filename):
+            raise FilePathNotFound(ErrorCodesInfo.SOURCE_EXCEL_NOT_EXIST, filename)
         if not self._does_excel_format(filename):
-            raise SourceFileFormatError(ErrorCodesInfo.FILE_NOT_EXCEL_FORMAT, filename)
+            raise FileFormatError(ErrorCodesInfo.SOURCE_FILE_NOT_EXCEL_FORMAT, filename)
 
-        self._filename = filename
+        self._filename = FilePathSearcher.fullpath(filename)
 
     @property
     def datasheet(self) -> pd.DataFrame:
@@ -51,7 +52,7 @@ class ExcelSheetParser(object):
 
         if sheetname:
             if sheetname not in self._excel.sheet_names:
-                raise SourceContentNotExist(ErrorCodesInfo.SHEET_NOT_FOUND_IN_EXCEL)
+                raise FileContentNotExist(ErrorCodesInfo.SHEET_NOT_FOUND_IN_EXCEL)
             self._datasheet = self._excel.parse(sheetname)
         else:
             self._datasheet = self._excel.parse()

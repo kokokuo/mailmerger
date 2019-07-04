@@ -19,7 +19,4 @@ class PreMergeSourceDTO(object):
         return False
 
     def __repr__(self):
-        return f"<PreMergeSourceDTO ========== \n\
-                  - headers: {self.headers} \n\
-                   -dataset: {self.dataset} \n\
-                  ========================================>"
+        return f"<PreMergeSourceDTO : headers: {self.headers} dataset: {self.dataset}"

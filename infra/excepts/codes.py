@@ -6,7 +6,10 @@ class ErrorCodesInfo(Enum):
     """
     例外代碼與訊息
     """
-    EXCEL_NOT_FOUND = "This path of excel file does not found."
-    FILE_NOT_EXCEL_FORMAT = "This file does not belong to excel format type."
+    PATH_NOT_FOUND = "This path does not found."
+    SOURCE_EXCEL_NOT_EXIST = "This path of source excel file does not exist."
+    EMAIL_DRAFT_PATH_NOT_EXIST = "This path of email draft file does not exist."
+    SOURCE_FILE_NOT_EXCEL_FORMAT = "This source file does not belong to excel format type."
     SHEET_NOT_FOUND_IN_EXCEL = "This sheet does not exist in excel file."
     SHEET_CONTENT_EMPTY = "This content of sheet is empty, no data."
+    EMAIL_DRAFT_CONTENT_NOT_EXIST = "The content of email draft not exist, draft have not loaded yet"
