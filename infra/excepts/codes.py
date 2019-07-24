@@ -13,3 +13,5 @@ class ErrorCodesInfo(Enum):
     SHEET_NOT_FOUND_IN_EXCEL = "This sheet does not exist in excel file."
     SHEET_CONTENT_EMPTY = "This content of sheet is empty, no data."
     EMAIL_DRAFT_CONTENT_NOT_EXIST = "The content of email draft not exist, draft have not loaded yet"
+    ALL_MERGE_TAG_NOT_MATCH = "The all tags of pre-defined for merging not matched"
+    NO_MERGE_TAGS = 'There is no tags for merging in the draft.'

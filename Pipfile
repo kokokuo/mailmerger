@@ -16,6 +16,7 @@ click = "*"
 pyyaml = "*"
 colorama = "*"
 xlrd = "*"
+pdfkit = "*"
 
 [requires]
 python_version = "3.7"

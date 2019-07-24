@@ -2,7 +2,7 @@
 from logging import Logger
 from apps.dto.source import PreMergeSourceDTO
 from apps.assembler.source import PreMergeSourceAssembler
-from domain.models.excel import ExcelSheetParser
+from domain.models.sources import ExcelSheetParser
 from infra.logging import scraping_logger
 
 

@@ -62,3 +62,13 @@ class FileContentNotExist(ApplicationException):
                  error: ErrorCodesInfo,
                  detail: Optional[str] = None) -> None:
         super(FileContentNotExist, self).__init__(error, detail)
+
+
+class MergedContentFailed(ApplicationException):
+    """
+    合併內容失敗
+    """
+    def __init__(self,
+                 error: ErrorCodesInfo,
+                 detail: Optional[str] = None) -> None:
+        super(MergedContentFailed, self).__init__(error, detail)

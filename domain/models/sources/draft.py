@@ -17,7 +17,6 @@ class EmailDraftReader(object):
     def __init__(self, draftname: str):
         self._draftname = draftname
         self._draftpath: str = self._find_draftpath(draftname)
-        self._content: str = ""
 
     def _find_draftpath(self, draftname: str) -> str:
         """
