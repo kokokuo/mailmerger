@@ -6,7 +6,7 @@ class HtmlWriter(IWriter):
     def write(cls, filename: str, src: str) -> bool:
         filename = filename + ".html"
         try:
-            with open(filename, "r+", encoding="utf8") as fp:
+            with open(filename, "w+", encoding="utf8") as fp:
                 fp.write(src)
             return True
         except Exception as e:

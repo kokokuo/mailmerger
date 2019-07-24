@@ -35,7 +35,10 @@ class SourceMergeEmailDraftService(object):
         print(results)
 
     def merge2html(self, draft_content: str, source: PreMergeSourceDTO):
-        pass
+        merger = SourceMerger(draft_content)
+        merged_contents: List[MergedSetVO] = merger.merge_source(source.headers, source.dataset)
+        results = MergedOutputExcutor.output(OutputOption.HTML, merged_contents)
+        print(results)
 
     def merge2send(self, draft_content: str, source: PreMergeSourceDTO):
         pass
