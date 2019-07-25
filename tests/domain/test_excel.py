@@ -2,7 +2,7 @@ import pytest
 from logging import Logger
 from unittest.mock import MagicMock
 from typing import Dict, List, Callable, Any
-from domain.models.excel import ExcelSheetParser
+from domain.models.sources import ExcelSheetParser
 from infra.excepts.codes import ErrorCodesInfo
 from infra.excepts.types import FilePathNotFound
 from infra.excepts.types import FileFormatError
