@@ -16,7 +16,9 @@ def makepdf(excelpath: str, mailpath: str):
 
 
 def makehtml(excelpath: str, mailpath: str):
-    raise NotImplementedError()
+    source: PreMergeSourceDTO = parsing_service.parsing_excel(excelpath)
+    mail_content = merge_service.read_draft(mailpath)
+    merge_service.merge2html(mail_content, source)
 
 
 def sendemail(excelpath: str, mailpath: str):

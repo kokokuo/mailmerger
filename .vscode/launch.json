@@ -1,0 +1,16 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Mailmerge for PDF Command Running",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/mailmerge.py",
+            "console": "integratedTerminal",
+            "args" : [ "./tests/sheets/TestEnHeader.xlsx", "./tests/templates/Test01.html", "--action=pdf"]
+        }
+    ]
+}

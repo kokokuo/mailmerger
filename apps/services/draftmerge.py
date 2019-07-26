@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
+from typing import List
 from logging import Logger
 from infra.logging import scraping_logger
 from apps.dto.source import PreMergeSourceDTO
-from domain.models.draft import EmailDraftReader
-from domain.models.merger import SourceMailMerger
+from domain.models.sources import EmailDraftReader
+from domain.models.merged import MergedSetVO
+from domain.models.merged import OutputOption
+from domain.models.merged import MergedOutputExcutor
+from domain.models.merger import SourceMerger
 
 
 class SourceMergeEmailDraftService(object):
@@ -25,11 +29,16 @@ class SourceMergeEmailDraftService(object):
         return reader.read()
 
     def merge2pdf(self, draft_content: str, source: PreMergeSourceDTO):
-        merger = SourceMailMerger(draft_content)
-        merger.merge_source(source.headers, source.dataset)
+        merger = SourceMerger(draft_content)
+        merged_contents: List[MergedSetVO] = merger.merge_source(source.headers, source.dataset)
+        results = MergedOutputExcutor.output(OutputOption.PDF, merged_contents)
+        print(results)
 
     def merge2html(self, draft_content: str, source: PreMergeSourceDTO):
-        pass
+        merger = SourceMerger(draft_content)
+        merged_contents: List[MergedSetVO] = merger.merge_source(source.headers, source.dataset)
+        results = MergedOutputExcutor.output(OutputOption.HTML, merged_contents)
+        print(results)
 
     def merge2send(self, draft_content: str, source: PreMergeSourceDTO):
         pass
