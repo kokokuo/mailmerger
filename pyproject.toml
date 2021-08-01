@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "mailmerger"
+version = "0.1.0"
+description = "mailmerger is a command line tool which read source sheet or table data and automatically send large emails after merging email HTML template."
+authors = ["kokokuo <v6610688@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.6.1, <=3.9.0"
+pandas = { version = "^1.1.5", python = ">=3.6.1" }
+pyyaml = "^5.3.1"
+colorama = "^0.4.4"
+pdfkit = "^0.6.1"
+xlrd = "^1.2.0"
+click = "^7.1.2"
+jinja2 = "^2.11.2"
+openpyxl = {version = "^3.0.7", python = ">=3.6.1"}
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.8.3"
+mypy = "^0.790"
+pytest = "^6.1.1"
+pytest-cov = "^2.10.1"
+black = { version = "^21.7b0", python = ">=3.6.2, <4.0" }
+Faker = {version = "^8.10.3", python = ">=3.6.2"}
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

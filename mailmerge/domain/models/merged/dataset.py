@@ -4,7 +4,7 @@
 class MergedSetVO(object):
     """
     合併後的資料集
-    Agrs:
+    args:
         name (str): 該資料集的名稱
         content (str): 合併後的內容
     """

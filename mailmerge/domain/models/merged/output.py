@@ -1,15 +1,12 @@
-# -*- coding: utf-8 -*-
 from typing import List, Dict, Type
 from collections import OrderedDict
 from .dataset import MergedSetVO
 from .option import OutputOption
 from .result import OutputResultVO
-from infra.writer import IWriter
-from infra.writer.pdf import PDFWriter
-from infra.writer.html import HtmlWriter
+from mailmerge.infra.io.writers import IWriter, PDFWriter, HtmlWriter
 
 
-class MergedOutputExcutor(object):
+class MergedOutputExecutor(object):
 
     output_options: Dict[OutputOption, Type[IWriter]] = {
         OutputOption.PDF: PDFWriter,
