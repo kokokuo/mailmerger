@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class TestCommonConifg(object):
+class TestCommonConfig(object):
     LOGGER_NAME = "testing-logger"
     SHEET_TEST_DIRNAME = "sheets"
     EMAIL_TEMPLATE_TEST_DIRNAME = "templates"
@@ -9,7 +9,7 @@ class TestCommonConifg(object):
 
 class TestSheetColHeader(Enum):
     """
-    TestEnHeader.xlsx 與 TestCnHeader.xlsx 的 Coulmn 標頭定義，差異為英文跟中文
+    TestEnHeader.xlsx 與 TestCnHeader.xlsx 的 Column 標頭定義，差異為英文跟中文
     """
     EN_HOTELNAME = "HotelName"
     EN_ADDRESS = "Address"
@@ -26,7 +26,7 @@ class TestSheetColHeader(Enum):
     CN_EMAIL = "信箱"
 
 
-class TestSheetConifg(object):
+class TestSheetConfig(object):
     TEST_EN_HEADER_SHEET_FILENAME = "TestEnHeader.xlsx"
     TEST_CN_HEADER_SHEET_FILENAME = "TestCnHeader.xlsx"
     TEST_NON_EXIST_SHEET_FILENAME = "NotExistSheetFile.xlsx"
@@ -42,7 +42,7 @@ class TestSheetConifg(object):
     TEST_CN_HEADER_SHEET_NAME = "旅館資訊"
 
 
-class TestParsinExcelSheetConifg(object):
+class TestParsinExcelSheetConfig(object):
     """
     TestEnHeader.xlsx 每 Row 資料：與 TestCnHeader.xlsx 的差異在 Column 標頭定義為英文
     """
@@ -54,7 +54,7 @@ class TestParsinExcelSheetConifg(object):
         TestSheetColHeader.EN_WEBSITE_URL.value: "http://taipei.grand.hyatt.com",
         TestSheetColHeader.EN_EMAIL.value: "taipei.grand@hyatt.com"
     }
-    TSET_DATASHEET_EN_HEADER_ROW_B = {
+    TEST_DATASHEET_EN_HEADER_ROW_B = {
         TestSheetColHeader.EN_HOTELNAME.value: "凱達大飯店",
         TestSheetColHeader.EN_ADDRESS.value: "108臺北市萬華區艋舺大道167號",
         TestSheetColHeader.EN_PHONE.value: "02-2306-6777",
@@ -63,7 +63,7 @@ class TestParsinExcelSheetConifg(object):
         TestSheetColHeader.EN_EMAIL.value: "cm.reservation@caesarpark.com.tw"
     }
 
-    TSET_DATASHEET_EN_HEADER_ROW_C = {
+    TEST_DATASHEET_EN_HEADER_ROW_C = {
         TestSheetColHeader.EN_HOTELNAME.value: "王朝大酒店",
         TestSheetColHeader.EN_ADDRESS.value: "105臺北市松山區敦化北路100號",
         TestSheetColHeader.EN_PHONE.value: "02-27198399",
@@ -83,7 +83,7 @@ class TestParsinExcelSheetConifg(object):
         TestSheetColHeader.CN_WEBSITE_URL.value: "http://taipei.grand.hyatt.com",
         TestSheetColHeader.CN_EMAIL.value: "taipei.grand@hyatt.com"
     }
-    TSET_DATASHEET_CN_HEADER_ROW_B = {
+    TEST_DATASHEET_CN_HEADER_ROW_B = {
         TestSheetColHeader.CN_HOTELNAME.value: "凱達大飯店",
         TestSheetColHeader.CN_ADDRESS.value: "108臺北市萬華區艋舺大道167號",
         TestSheetColHeader.CN_PHONE.value: "02-2306-6777",
@@ -92,7 +92,7 @@ class TestParsinExcelSheetConifg(object):
         TestSheetColHeader.CN_EMAIL.value: "cm.reservation@caesarpark.com.tw"
     }
 
-    TSET_DATASHEET_CN_HEADER_ROW_C = {
+    TEST_DATASHEET_CN_HEADER_ROW_C = {
         TestSheetColHeader.CN_HOTELNAME.value: "王朝大酒店",
         TestSheetColHeader.CN_ADDRESS.value: "105臺北市松山區敦化北路100號",
         TestSheetColHeader.CN_PHONE.value: "02-27198399",
@@ -104,7 +104,7 @@ class TestParsinExcelSheetConifg(object):
     """
     TestCnHeader.xlsx 的第四筆資料，作為測試錯誤的預期結果使用
     """
-    TSET_DATASHEET_CN_HEADER_ROW_D = {
+    TEST_DATASHEET_CN_HEADER_ROW_D = {
         TestSheetColHeader.CN_HOTELNAME.value: "台北寒舍喜來登大飯店",
         TestSheetColHeader.CN_ADDRESS.value: "100臺北市中正區忠孝東路1段12號",
         TestSheetColHeader.CN_PHONE.value: "02-2321-5511",
@@ -118,14 +118,14 @@ class TestParsinExcelSheetConifg(object):
     """
     TEST_EN_HEADER_SHEET_EXPECTED_RESULT = [
         TEST_DATASHEET_EN_HEADER_ROW_A,
-        TSET_DATASHEET_EN_HEADER_ROW_B,
-        TSET_DATASHEET_EN_HEADER_ROW_C
+        TEST_DATASHEET_EN_HEADER_ROW_B,
+        TEST_DATASHEET_EN_HEADER_ROW_C
     ]
 
     TEST_CN_HEADER_SHEET_EXPECTED_RESULT = [
         TEST_DATASHEET_CN_HEADER_ROW_A,
-        TSET_DATASHEET_CN_HEADER_ROW_B,
-        TSET_DATASHEET_CN_HEADER_ROW_C
+        TEST_DATASHEET_CN_HEADER_ROW_B,
+        TEST_DATASHEET_CN_HEADER_ROW_C
     ]
 
     """
@@ -133,18 +133,18 @@ class TestParsinExcelSheetConifg(object):
     """
     TEST_CN_HEADER_SHEET_NON_EXPECTED_RESULT_DATA_DIFF = [
         TEST_DATASHEET_CN_HEADER_ROW_A,
-        TSET_DATASHEET_CN_HEADER_ROW_C,
-        TSET_DATASHEET_CN_HEADER_ROW_B
+        TEST_DATASHEET_CN_HEADER_ROW_C,
+        TEST_DATASHEET_CN_HEADER_ROW_B
     ]
 
     TEST_CN_HEADER_SHEET_NON_EXPECTED_RESULT_ORDER_DIFF = [
         TEST_DATASHEET_CN_HEADER_ROW_A,
-        TSET_DATASHEET_CN_HEADER_ROW_B,
-        TSET_DATASHEET_CN_HEADER_ROW_D
+        TEST_DATASHEET_CN_HEADER_ROW_B,
+        TEST_DATASHEET_CN_HEADER_ROW_D
     ]
 
 
-class TestParsingSourceConifg(object):
+class TestParsingSourceConfig(object):
 
     """
     預期的合併 Column 標頭 以及資料
@@ -159,7 +159,7 @@ class TestParsingSourceConifg(object):
     ]
 
     TEST_CH_PREMERGE_SOURCE_EXPECTED_ROWSET = \
-        TestParsinExcelSheetConifg.TEST_CN_HEADER_SHEET_EXPECTED_RESULT
+        TestParsinExcelSheetConfig.TEST_CN_HEADER_SHEET_EXPECTED_RESULT
 
     """
     預期錯誤的合併 Column 標頭 以及 資料 - 資料不正確
@@ -173,7 +173,7 @@ class TestParsingSourceConifg(object):
         TestSheetColHeader.EN_EMAIL.value
     ]
     TEST_CH_PREMERGE_SOURCE_NON_EXPECTED_ROWSET_DATA_DIFF = \
-        TestParsinExcelSheetConifg.TEST_CN_HEADER_SHEET_NON_EXPECTED_RESULT_DATA_DIFF
+        TestParsinExcelSheetConfig.TEST_CN_HEADER_SHEET_NON_EXPECTED_RESULT_DATA_DIFF
 
     """
     預期錯誤的合併 Column 標頭 以及 資料 - 順序不正確
@@ -187,4 +187,4 @@ class TestParsingSourceConifg(object):
         TestSheetColHeader.CN_ADDRESS.value
     ]
     TEST_CH_PREMERGE_SOURCE_NON_EXPECTED_ROWSET_ORDER_DIFF = \
-        TestParsinExcelSheetConifg.TEST_CN_HEADER_SHEET_NON_EXPECTED_RESULT_ORDER_DIFF
+        TestParsinExcelSheetConfig.TEST_CN_HEADER_SHEET_NON_EXPECTED_RESULT_ORDER_DIFF

@@ -1,9 +1,23 @@
 import os
-from infra.excepts.types import FilePathNotFound
-from infra.excepts.codes import ErrorCodesInfo
+import abc
+from mailmerge.infra.excepts.types import FilePathNotFound
+from mailmerge.infra.excepts.codes import ErrorCodesInfo
 
 
-class FilePathSearcher(object):
+class IPathSearcher(abc.ABC):
+
+    @classmethod
+    @abc.abstractmethod
+    def exist(cls, path: str) -> bool:
+        pass
+
+    @classmethod
+    @abc.abstractmethod
+    def fullpath(cls, path: str) -> str:
+        pass
+
+
+class FilePathSearcher(IPathSearcher):
 
     @classmethod
     def exist(cls, path: str) -> bool:

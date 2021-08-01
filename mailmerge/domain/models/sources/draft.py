@@ -4,11 +4,11 @@ from logging import Logger
 from jinja2 import FileSystemLoader
 from jinja2 import Environment
 from jinja2 import TemplatesNotFound
-from infra.excepts.codes import ErrorCodesInfo
-from infra.excepts.types import FilePathNotFound
-from infra.excepts.types import FileContentNotExist
-from infra.logging import scraping_logger
-from infra.path.searcher import FilePathSearcher
+from mailmerge.infra.excepts.codes import ErrorCodesInfo
+from mailmerge.infra.excepts.types import FilePathNotFound
+from mailmerge.infra.excepts.types import FileContentNotExist
+from mailmerge.infra.logging import scraping_logger
+from mailmerge.infra.io.searchers import FilePathSearcher
 
 
 class EmailDraftReader(object):
@@ -43,3 +43,7 @@ class EmailDraftReader(object):
         with open(self._draftpath, mode="r+", encoding="utf-8") as fp:
             content = fp.read()
         return content
+
+    @property
+    def draftpath(self) -> str:
+        return self._draftpath

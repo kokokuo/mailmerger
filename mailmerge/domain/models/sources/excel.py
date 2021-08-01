@@ -3,12 +3,12 @@ import os
 from typing import Optional
 from logging import Logger
 import pandas as pd
-from infra.logging import scraping_logger
-from infra.excepts.types import FilePathNotFound
-from infra.excepts.types import FileFormatError
-from infra.excepts.types import FileContentNotExist
-from infra.excepts.codes import ErrorCodesInfo
-from infra.path.searcher import FilePathSearcher
+from mailmerge.infra.logging import scraping_logger
+from mailmerge.infra.excepts.types import FilePathNotFound
+from mailmerge.infra.excepts.types import FileFormatError
+from mailmerge.infra.excepts.types import FileContentNotExist
+from mailmerge.infra.excepts.codes import ErrorCodesInfo
+from mailmerge.infra.io.searchers import FilePathSearcher
 
 
 class ExcelSheetParser(object):

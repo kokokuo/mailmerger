@@ -3,6 +3,7 @@
 # Created by https://www.gitignore.io/api/macos,visualstudiocode,python
 # Edit at https://www.gitignore.io/?templates=macos,visualstudiocode,python
 
+
 ### macOS ###
 # General
 .DS_Store
@@ -171,3 +172,4 @@ dmypy.json
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
+/*.pdf

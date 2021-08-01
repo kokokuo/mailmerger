@@ -3,7 +3,7 @@
 class OutputResultVO(object):
     """
     輸出的結果集
-    Agrs:
+    args:
         name (str): 該資料集的名稱
         success (str): 輸出的結果
     """

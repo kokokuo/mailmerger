@@ -7,11 +7,11 @@ from logging import Logger
 from jinja2 import BaseLoader
 from jinja2 import Environment, meta
 from jinja2 import TemplatesNotFound
-from apps.dto.source import ColHeader, RowSet
-from domain.models.merged import MergedSetVO
-from infra.excepts.codes import ErrorCodesInfo
-from infra.excepts.types import MergedContentFailed
-from infra.logging import scraping_logger
+from mailmerge.apps.dto.source import ColHeader, RowSet
+from mailmerge.domain.models.merged import MergedSetVO
+from mailmerge.infra.excepts.codes import ErrorCodesInfo
+from mailmerge.infra.excepts.types import MergedContentFailed
+from mailmerge.infra.logging import scraping_logger
 import pdfkit
 
 
